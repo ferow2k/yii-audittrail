@@ -99,6 +99,8 @@ class AuditTrail extends CActiveRecord
 
     function getOldValue(){
         $model = $this->findModel();
+        if (!$model)
+            return null;
         $relations = $model->relations();        
         foreach($relations as $name=>$relation){
             if ($relation[2] == $this->field){
@@ -110,6 +112,8 @@ class AuditTrail extends CActiveRecord
 
     function getNewValue(){
         $model = $this->findModel();
+        if (!$model)
+            return null;
         $relations = $model->relations();        
         foreach($relations as $name=>$relation){
             if ($relation[2] == $this->field){
